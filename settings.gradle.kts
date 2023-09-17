@@ -1,3 +1,13 @@
+@file:Suppress("UnstableApiUsage")
+
+include(":core")
+
+
+include(":feature")
+
+
+include(":app")
+
 pluginManagement {
     repositories {
         google()
@@ -12,7 +22,3 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-
-rootProject.name = "MyCarPal"
-include(":app")
- 
