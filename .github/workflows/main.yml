@@ -14,7 +14,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: AI Code Reviewer
-        uses: Folenik/ai-codereviewer@v2.6.0
+        uses: Folenik/ai-codereviewer@main
 
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
