@@ -26,6 +26,7 @@ android {
     defaultConfig {
         buildConfigField("String", "APP_NAME", "\"WikiRandom\"")
         buildConfigField("String", "API_BASE_URL", "\"https://en.wikipedia.org/api/\"")
+        buildConfigField("String", "API_RANDOM_ARTICLE_ENDPOINT", "\"rest_v1/page/random/summary\"")
     }
 
 
