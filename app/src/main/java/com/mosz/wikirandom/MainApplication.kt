@@ -6,12 +6,13 @@ import timber.log.Timber
 
 @HiltAndroidApp
 class MainApplication : Application() {
-
+//TODO asd
     override fun onCreate() {
         super.onCreate()
 
-        if (BuildConfig.DEBUG) {
-            Timber.plant(Timber.DebugTree())
-        }
+        Timber.plant(Timber.DebugTree())
+
+
+        print("asd")
     }
 }
