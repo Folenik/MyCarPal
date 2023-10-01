@@ -15,7 +15,7 @@ fun RandomArticleScreen(viewModel: RandomArticleViewModel) {
             Text(text = "${randomArticleState.randomArticleResponse.title} | ${randomArticleState.randomArticleResponse.description}")
         }
         is RandomArticleState.Error -> {
-            Text(text = randomArticleState.message)
+            Text(text = "Your error is: ${randomArticleState.message}")
         }
     }
 }

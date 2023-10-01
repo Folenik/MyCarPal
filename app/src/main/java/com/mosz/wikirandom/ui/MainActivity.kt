@@ -10,12 +10,10 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
-    //Just for testing
     private val randomArticleViewModel by viewModels<RandomArticleViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //Just for testing
         setContent {
             RandomArticleScreen(viewModel = randomArticleViewModel)
         }
