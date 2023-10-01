@@ -1,4 +1,4 @@
-package com.mosz.mycarpal
+package com.mosz.wikirandom
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp

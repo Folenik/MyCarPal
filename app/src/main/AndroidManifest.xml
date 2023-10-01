@@ -12,9 +12,23 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:name=".MainApplication"
-        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.MyCarPal"
-        tools:targetApi="31" />
+        android:theme="@style/Theme.WikiRandom"
+        tools:targetApi="31">
+
+        <activity
+            android:name=".ui.MainActivity"
+            android:exported="true"
+            android:theme="@style/Theme.WikiRandom">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+
+
+    </application>
 
 </manifest>
