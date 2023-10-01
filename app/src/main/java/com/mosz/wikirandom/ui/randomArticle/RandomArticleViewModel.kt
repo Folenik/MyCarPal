@@ -27,12 +27,12 @@ class RandomArticleViewModel @Inject constructor(private val repository: Reposit
             repository.getRandomArticle().collect { values ->
                 when(values) {
                     is NetworkResult.Success -> {
-                        Timber.d("Fetch successful")
+                        Timber.d("Fetch successful for data: ${values.data}")
                         _randomArticle.value = RandomArticleState.Success(values.data!!)
                     }
                     is NetworkResult.Error -> {
-                        Timber.d("Fetch error")
-                        _randomArticle.value = RandomArticleState.Error(values.message!!)
+                        Timber.d("Fetch error: ${values.message!!}")
+                        _randomArticle.value = RandomArticleState.Error(values.message)
                     }
                 }
             }
