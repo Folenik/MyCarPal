@@ -87,6 +87,7 @@ dependencies {
     implementation(libs.kotlin.coroutines)
     implementation(libs.navigation.hilt)
     implementation(libs.retrofit)
+    implementation(libs.coil)
     implementation(platform(libs.compose.bom))
 
     testImplementation(libs.bundles.common.test)

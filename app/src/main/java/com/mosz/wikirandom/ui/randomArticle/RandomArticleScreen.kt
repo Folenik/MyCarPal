@@ -6,14 +6,19 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import com.mosz.wikirandom.ui.components.ProgressIndicator
+import com.mosz.wikirandom.ui.components.RandomArticleBox
 
 @Composable
 fun RandomArticleScreen(viewModel: RandomArticleViewModel) {
     when (val randomArticleState = viewModel.randomArticle.collectAsState().value) {
         is RandomArticleState.Loading -> ProgressIndicator(modifier = Modifier.alpha(1f))
         is RandomArticleState.Success -> {
-            Text(text = "${randomArticleState.randomArticleResponse.title} | ${randomArticleState.randomArticleResponse.description}")
+            RandomArticleBox(
+                viewModel = viewModel,
+                randomArticle = randomArticleState.randomArticleResponse
+            )
         }
+
         is RandomArticleState.Error -> {
             Text(text = randomArticleState.message)
         }
