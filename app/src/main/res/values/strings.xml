@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">WikiRandom</string>
     <string name="refresh">Refresh</string>
-
+    <string name="error">Something went wrong. Please try again.</string>
 </resources>
