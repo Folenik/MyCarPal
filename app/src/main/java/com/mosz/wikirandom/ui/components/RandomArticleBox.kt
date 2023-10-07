@@ -37,6 +37,14 @@ fun RandomArticleBox(
     viewModel: RandomArticleViewModel, randomArticle: RandomArticleResponse
 ) {
     val lightGreenColor = colorResource(id = R.color.lightGreen)
+    val painter = rememberAsyncImagePainter(
+        ImageRequest.Builder(LocalContext.current)
+            .data(data = randomArticle.thumbnail?.source!!)
+            .apply(block = fun ImageRequest.Builder.() {
+                crossfade(true)
+            }).build()
+    )
+    val isImageLoading = painter.state is AsyncImagePainter.State.Loading
 
     Box(modifier = Modifier.fillMaxSize()) {
         Card(
@@ -55,15 +63,9 @@ fun RandomArticleBox(
                 Text(
                     text = randomArticle.title!!,
                     style = MaterialTheme.typography.headlineLarge,
-                    modifier = Modifier.padding(bottom = 8.dp)
-                )
-
-                val painter = rememberAsyncImagePainter(
-                    ImageRequest.Builder(LocalContext.current)
-                        .data(data = randomArticle.thumbnail?.source!!)
-                        .apply(block = fun ImageRequest.Builder.() {
-                            crossfade(true)
-                        }).build()
+                    modifier = Modifier
+                        .padding(bottom = 8.dp)
+                        .alpha(if (isImageLoading) 0f else 1f)
                 )
 
                 Box(
@@ -79,8 +81,7 @@ fun RandomArticleBox(
                             .fillMaxSize()
                             .background(lightGreenColor)
                     )
-
-                    if (painter.state is AsyncImagePainter.State.Loading) {
+                    if (isImageLoading) {
                         ProgressIndicator(modifier = Modifier.alpha(1f))
                     }
                 }
@@ -90,7 +91,9 @@ fun RandomArticleBox(
                 Text(
                     text = randomArticle.extract!!,
                     style = MaterialTheme.typography.bodyMedium,
-                    modifier = Modifier.fillMaxWidth()
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .alpha(if (isImageLoading) 0f else 1f)
                 )
             }
         }
