@@ -22,12 +22,12 @@ class RandomArticleViewModel @Inject constructor(private val repository: Reposit
         getRandomArticle()
     }
 
-    private fun getRandomArticle() {
+    fun getRandomArticle() {
         viewModelScope.launch {
             repository.getRandomArticle().collect { values ->
                 when(values) {
                     is NetworkResult.Success -> {
-                        Timber.d("Fetch successful")
+                        Timber.d("Fetch successful: ${values.data!!}")
                         _randomArticle.value = RandomArticleState.Success(values.data!!)
                     }
                     is NetworkResult.Error -> {
