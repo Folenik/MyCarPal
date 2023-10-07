@@ -1,12 +1,11 @@
 package com.mosz.wikirandom.ui.randomArticle
-
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import com.mosz.wikirandom.ui.components.ProgressIndicator
 import com.mosz.wikirandom.ui.components.RandomArticleBox
+import com.mosz.wikirandom.ui.components.RandomArticleErrorBox
 
 @Composable
 fun RandomArticleScreen(viewModel: RandomArticleViewModel) {
@@ -18,9 +17,8 @@ fun RandomArticleScreen(viewModel: RandomArticleViewModel) {
                 randomArticle = randomArticleState.randomArticleResponse
             )
         }
-
         is RandomArticleState.Error -> {
-            Text(text = randomArticleState.message)
+            RandomArticleErrorBox(viewModel = viewModel)
         }
     }
 }

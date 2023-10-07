@@ -15,7 +15,6 @@ import timber.log.Timber
 @HiltViewModel
 class RandomArticleViewModel @Inject constructor(private val repository: Repository) : ViewModel() {
     private var _randomArticle = MutableStateFlow<RandomArticleState>(RandomArticleState.Loading)
-
     val randomArticle: StateFlow<RandomArticleState> = _randomArticle.asStateFlow()
 
     init {
@@ -25,14 +24,15 @@ class RandomArticleViewModel @Inject constructor(private val repository: Reposit
     fun getRandomArticle() {
         viewModelScope.launch {
             repository.getRandomArticle().collect { values ->
-                when(values) {
+                when (values) {
                     is NetworkResult.Success -> {
                         Timber.d("Fetch successful: ${values.data!!}")
-                        _randomArticle.value = RandomArticleState.Success(values.data!!)
+                        _randomArticle.value = RandomArticleState.Success(values.data)
                     }
+
                     is NetworkResult.Error -> {
-                        Timber.d("Fetch error")
-                        _randomArticle.value = RandomArticleState.Error(values.message!!)
+                        Timber.d("Fetch error: ${values.message}")
+                        _randomArticle.value = RandomArticleState.Error
                     }
                 }
             }

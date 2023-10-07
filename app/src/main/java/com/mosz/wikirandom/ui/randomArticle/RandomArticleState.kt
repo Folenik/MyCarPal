@@ -4,6 +4,6 @@ import com.mosz.wikirandom.data.model.RandomArticleResponse
 
 sealed class RandomArticleState {
     data object Loading : RandomArticleState()
-    data class Error(val message: String) : RandomArticleState()
+    data object Error : RandomArticleState()
     data class Success(val randomArticleResponse: RandomArticleResponse) : RandomArticleState()
 }
