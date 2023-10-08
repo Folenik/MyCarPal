@@ -1,6 +1,5 @@
 package com.mosz.wikirandom
 
-import android.util.Log
 import androidx.compose.ui.test.ExperimentalTestApi
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.hasTestTag

@@ -5,10 +5,8 @@ import com.mosz.wikirandom.data.model.RandomArticleResponse
 import com.mosz.wikirandom.data.remote.RemoteDataSource
 import com.mosz.wikirandom.utils.NetworkResult
 import dagger.hilt.android.scopes.ActivityRetainedScoped
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.flowOn
 import javax.inject.Inject
 
 @ActivityRetainedScoped

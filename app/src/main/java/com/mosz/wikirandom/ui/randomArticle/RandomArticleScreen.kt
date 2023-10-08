@@ -1,4 +1,5 @@
 package com.mosz.wikirandom.ui.randomArticle
+
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
