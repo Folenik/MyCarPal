@@ -16,7 +16,6 @@ import org.mockito.Mockito.mock
 import org.mockito.kotlin.whenever
 import kotlin.test.assertEquals
 
-
 @ExperimentalCoroutinesApi
 class RandomArticleViewModelTest {
     @get:Rule

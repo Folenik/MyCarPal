@@ -1,6 +1,5 @@
 plugins {
     alias(libs.plugins.android.application)
-    alias(libs.plugins.detekt)
     alias(libs.plugins.hilt)
     alias(libs.plugins.kotlin)
     alias(libs.plugins.kotlin.parcelize)
@@ -96,10 +95,4 @@ dependencies {
 
     ksp(libs.hilt.compiler)
     kspAndroidTest(libs.test.android.hilt.compiler)
-
-    detektPlugins(libs.detekt.compose.rules)
-}
-
-ksp {
-    arg("room.schemaLocation", "$projectDir/schemas")
 }
