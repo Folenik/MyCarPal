@@ -3,7 +3,6 @@ plugins {
     alias(libs.plugins.detekt)
     alias(libs.plugins.hilt)
     alias(libs.plugins.kotlin)
-    alias(libs.plugins.junit)
     alias(libs.plugins.kotlin.parcelize)
     alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.ksp)
@@ -27,6 +26,7 @@ android {
         buildConfigField("String", "APP_NAME", "\"WikiRandom\"")
         buildConfigField("String", "API_BASE_URL", "\"https://en.wikipedia.org/api/\"")
         buildConfigField("String", "API_RANDOM_ARTICLE_ENDPOINT", "\"rest_v1/page/random/summary\"")
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
 

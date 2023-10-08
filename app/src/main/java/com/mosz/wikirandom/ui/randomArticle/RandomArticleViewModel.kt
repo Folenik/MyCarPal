@@ -3,17 +3,23 @@ package com.mosz.wikirandom.ui.randomArticle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.mosz.wikirandom.data.Repository
+import com.mosz.wikirandom.utils.DispatcherProvider
 import com.mosz.wikirandom.utils.NetworkResult
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.launch
 import timber.log.Timber
 
 @HiltViewModel
-class RandomArticleViewModel @Inject constructor(private val repository: Repository) : ViewModel() {
+class RandomArticleViewModel @Inject constructor(
+    private val repository: Repository,
+    private val dispatcherProvider: DispatcherProvider
+) : ViewModel() {
     private var _randomArticle = MutableStateFlow<RandomArticleState>(RandomArticleState.Loading)
     val randomArticle: StateFlow<RandomArticleState> = _randomArticle.asStateFlow()
 
@@ -22,7 +28,7 @@ class RandomArticleViewModel @Inject constructor(private val repository: Reposit
     }
 
     fun getRandomArticle() {
-        viewModelScope.launch {
+        viewModelScope.launch(dispatcherProvider.io()) {
             repository.getRandomArticle().collect { values ->
                 when (values) {
                     is NetworkResult.Success -> {

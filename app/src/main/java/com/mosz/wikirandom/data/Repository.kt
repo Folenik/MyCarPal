@@ -19,6 +19,6 @@ class Repository @Inject constructor(
     suspend fun getRandomArticle(): Flow<NetworkResult<RandomArticleResponse>> {
         return flow {
             emit(safeApiCall { remoteDataSource.getRandomArticle() })
-        }.flowOn(Dispatchers.IO)
+        }
     }
 }
