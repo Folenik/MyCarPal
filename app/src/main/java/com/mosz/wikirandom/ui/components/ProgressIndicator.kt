@@ -6,6 +6,7 @@ import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.colorResource
 import com.mosz.wikirandom.R
 
@@ -13,7 +14,7 @@ import com.mosz.wikirandom.R
 fun ProgressIndicator(modifier: Modifier) {
     Box(
         contentAlignment = Alignment.Center,
-        modifier = modifier.fillMaxSize()
+        modifier = modifier.fillMaxSize().testTag("pBar")
     ) {
         CircularProgressIndicator(color = colorResource(id = R.color.green))
     }
